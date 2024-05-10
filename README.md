@@ -61,3 +61,4 @@ Once you've completed the setup steps, you can run the Django development server
 
 ```bash
 python manage.py runserver
+Visit : http://127.0.0.1:8000/financial

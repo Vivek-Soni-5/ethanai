@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py makemigrations ethanai_register && python manage.py sqlmigrate ethanai_register 0001 && python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: ethanai
+    environment:
+      POSTGRES_DB: EthanAiDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345

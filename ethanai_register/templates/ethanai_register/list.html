@@ -1,0 +1,41 @@
+{% extends "ethanai_register/base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">List Of Data</h2>
+<table>
+    <thead>
+        <tr>
+            <td><b>ISIN</b></td>
+            <td><b>Symbol</b></td>
+            <td><b>Date</b></td>
+            <td><b>Asset Class</b></td>
+            <td><b>Quantity</b></td>
+            <td><b>Market Price</b></td>
+            <td><b>Cost Price</b></td>
+            <td><b>Edit</b></td>
+            <td><b>Delete</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for list in financial_list %}
+            <tr>
+                <td>{{list.ISIN}}</td>
+                <td>{{list.symbol}}</td>
+                <td>{{list.date}}</td>
+                <td>{{list.asset_class}}</td>
+                <td>{{list.quantity}}</td>
+                <td>{{list.market_price}}</td>
+                <td>{{list.cost_price}}</td>
+                <td>
+                    <a href="{% url 'update' list.id %}">Edit
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete' list.id %}">Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}    
+    </tbody>
+</table>
+{% endblock content %}
